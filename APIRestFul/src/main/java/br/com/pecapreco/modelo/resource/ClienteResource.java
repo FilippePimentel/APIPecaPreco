@@ -28,7 +28,10 @@ import br.com.pecapreco.modelo.model.Cliente;
 public class ClienteResource {
 
 	private final ClienteDAO cliDao = new ClienteDAO();
+	private final Cliente clic = new Cliente();
 
+	
+	
 	@POST
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
@@ -68,7 +71,7 @@ public class ClienteResource {
 	@GET
 	@Path("/buscarPorNome")
 	@Produces("application/json")
-	public Cliente buscarClientePeloNome(@QueryParam("nome") String nome) {
+	public ClienteHTTP buscarClientePeloNome(@QueryParam("nome") String nome) {
 
 		Cliente cli = new Cliente();
 		try {
@@ -76,14 +79,17 @@ public class ClienteResource {
 		} catch (Exception ex) {
 			cli = null;
 		}
-		return cli;
+		return cli.criarJsonComCarros();
 	}
 
 	@GET
 	@Path("/buscarPorID")
 	@Produces("application/json")
-	public Cliente buscarClientePeloId(@QueryParam("id") String id) {
-		return cliDao.lerPorId(Integer.parseInt(id));
+	public ClienteHTTP buscarClientePeloId(@QueryParam("id") String id) {
+		
+		Cliente clic = cliDao.lerPorId(Integer.parseInt(id));
+		
+		return clic.criarJsonComCarros();
 	}
 
 	@POST
