@@ -37,7 +37,6 @@ public class OBDResource {
 		ObdDAO obdDao = new ObdDAO();
 		JSONArray jarray = new JSONArray(ArrayJsonOBD);
 		
-
 		if (!jarray.isEmpty()) {
 			Carro car = retornarCarro(jarray.getJSONObject(1).getString("placa"));
 			for (int i = 0 ; i < jarray.length(); i++) {
@@ -97,4 +96,29 @@ public class OBDResource {
 		return obdDao.buscarOBDPorPlaca(placa);
 	}
 
+	@GET
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/verificarConsumo")
+	public Boolean verificarConsumo(@QueryParam("placa") String placa) {
+		
+		//Se o consumo for maior que o esperado retorna TRUE
+		
+		ObdDAO obdDao 	= new ObdDAO();
+		CarroDAO carDao = new CarroDAO();
+		Boolean verificador = false;
+		try {
+		List<OBD> lista = obdDao.buscarOBDPorPlaca(placa);
+		Carro car = carDao.buscarPorPlaca(placa);
+		for(OBD obd : lista)
+		{
+			verificador = obd.getS1()/obd.getS2()>car.getKmLitro();
+		}
+		}catch(Exception ex) {
+			System.out.println(ex);
+		}
+		return verificador;
+	}
+	
+	
 }
