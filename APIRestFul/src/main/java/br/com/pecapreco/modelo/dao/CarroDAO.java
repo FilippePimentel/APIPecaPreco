@@ -1,14 +1,10 @@
 package br.com.pecapreco.modelo.dao;
 
-import java.util.List;
-
 import javax.persistence.TypedQuery;
 
 import br.com.pecapreco.modelo.model.Carro;
-import br.com.pecapreco.modelo.model.Cliente;
 
 public class CarroDAO extends JpaDAO<Carro> {
-	
 	
 	public Carro buscarPorModelo(String modelo) {
 		String conector = " where ";

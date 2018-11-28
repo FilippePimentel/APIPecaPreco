@@ -34,7 +34,7 @@ public class CarroResource {
 	public String cadastrar(CarroHTTP carHTTP) {
 
 		Carro car = new Carro();
-		ClienteDAO cliDAO = new ClienteDAO();
+		//ClienteDAO cliDAO = new ClienteDAO();
 		
 		try {
 			car.setPlaca(carHTTP.getPlaca());
@@ -144,7 +144,7 @@ public class CarroResource {
 	}
 	
 	public CarroHTTP converterJSON(String json, CarroHTTP carHTTP, ClienteDAO cliDAO) {
-				JSONObject JsonObj = new JSONObject(json);
+//				JSONObject JsonObj = new JSONObject(json);
 				
 //		carHTTP.setId(JsonObj.getInt("id"));
 //		carHTTP.setMarca(JsonObj.getString("marca"));

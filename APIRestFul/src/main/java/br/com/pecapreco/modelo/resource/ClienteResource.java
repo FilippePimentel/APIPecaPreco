@@ -11,10 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import org.json.JSONObject;
 
-import br.com.pecapreco.http.CarroHTTP;
 import br.com.pecapreco.http.ClienteHTTP;
 import br.com.pecapreco.modelo.dao.ClienteDAO;
-import br.com.pecapreco.modelo.model.Carro;
 import br.com.pecapreco.modelo.model.Cliente;
 
 /**
@@ -28,10 +26,7 @@ import br.com.pecapreco.modelo.model.Cliente;
 public class ClienteResource {
 
 	private final ClienteDAO cliDao = new ClienteDAO();
-	private final Cliente clic = new Cliente();
 
-	
-	
 	@POST
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")

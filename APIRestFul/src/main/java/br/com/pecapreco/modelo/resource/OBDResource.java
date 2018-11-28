@@ -1,7 +1,5 @@
 package br.com.pecapreco.modelo.resource;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -11,11 +9,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-import org.hibernate.jpa.criteria.expression.function.AggregationFunction.MAX;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import br.com.pecapreco.http.CarroHTTP;
 import br.com.pecapreco.http.OBDConverter;
 import br.com.pecapreco.modelo.dao.CarroDAO;
 import br.com.pecapreco.modelo.dao.ObdDAO;
