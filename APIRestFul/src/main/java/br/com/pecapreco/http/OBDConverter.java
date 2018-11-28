@@ -8,6 +8,7 @@ public class OBDConverter {
 
 	private Integer id;
 	private Float s1 ;
+
 	private Float s2;
 	private Float s3;
 	private String datahora;
@@ -55,6 +56,13 @@ public class OBDConverter {
 	public void setCarro(Carro carro) {
 		this.carro = carro;
 	}
+	
+	@Override
+	public String toString() {
+		return "OBDConverter [id=" + id + ", s1=" + s1 + ", s2=" + s2 + ", s3=" + s3 + ", datahora=" + datahora
+				+ ", cliente=" + cliente + ", carro=" + carro + "]";
+	}
+	
 	public OBDConverter(Float s1, Float s2, Float s3, String datahora, String placa) {
 		
 		CarroDAO carDAO = new CarroDAO(); 
@@ -62,6 +70,7 @@ public class OBDConverter {
 		try {
 		car=carDAO.buscarPorPlaca(placa);
 		}catch(Exception ex) {
+			System.out.println("Erro: "+ex);
 			car.setCliente(null);
 		}
 		
@@ -71,6 +80,9 @@ public class OBDConverter {
 		this.datahora = datahora;
 		this.cliente = car.getCliente()==null?null:car.getCliente();
 		this.carro = car==null ? null :car;
+	}
+	public OBDConverter() {
+		// TODO Auto-generated constructor stub
 	}
 	
 }
