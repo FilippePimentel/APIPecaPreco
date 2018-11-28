@@ -9,7 +9,6 @@ public class CarroConverter {
 	private  Float 	kmLitro;
 	
 	
-	
 	public CarroConverter() {
 		
 	}
